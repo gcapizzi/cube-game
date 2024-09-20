@@ -104,8 +104,8 @@ function refresh() {
 	const words = Object.keys(dict);
 	const randomWord = words[Math.floor(Math.random()*words.length)];
 	term = dict[randomWord][0];
-	console.log(term);
-	document.querySelector("#word").innerHTML = `<a href="${term.youglish_link}" target="_blank">${term.text}</a>`;
+	document.querySelector("#word").value = term.text
+	document.querySelector("#listen").setAttribute("href", term.youglish_link);
 	document.querySelector("#guess-ascii").value = "";
 	document.querySelector("#guess-ipa").textContent = "";
 	document.querySelector("#result-ascii").textContent = "";
