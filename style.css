@@ -1,0 +1,7 @@
+#guide {
+	overflow: auto;
+}
+
+#guide table {
+	float: left;
+}
