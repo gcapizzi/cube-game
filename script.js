@@ -92,24 +92,50 @@ function asciiToIpa(ascii) {
 let term = {};
 let dict = {};
 
-function init() {
-	fetch("dict.json")
-		.then((response) => response.json())
-		.then((response) => {
-			dict = response;
-		}).then(() => refresh());
-}
-
-function refresh() {
-	const words = Object.keys(dict);
-	const randomWord = words[Math.floor(Math.random()*words.length)];
-	term = dict[randomWord][0];
+function setTerm(t) {
+	term = t;
 	document.querySelector("#word").value = term.text
 	document.querySelector("#listen").setAttribute("href", term.youglish_link);
 	document.querySelector("#guess-ascii").value = "";
 	document.querySelector("#guess-ipa").textContent = "";
 	document.querySelector("#result-ascii").textContent = "";
 	document.querySelector("#result-ipa").textContent = "";
+}
+
+function init() {
+	fetch("dict.json")
+		.then((response) => response.json())
+		.then((response) => {
+			dict = response;
+			const autoCompleteJS = new autoComplete({
+				selector: "#word",
+				placeHolder: "term",
+				data: {
+					src: Object.keys(dict),
+				},
+				resultItem: {
+					highlight: true,
+				},
+				resultsList: {
+					maxResults: 100,
+				},
+				events: {
+					input: {
+						selection: (event) => {
+							const selection = event.detail.selection.value;
+							autoCompleteJS.input.value = selection;
+							setTerm(dict[selection][0]);
+						}
+					}
+				}
+			});
+		}).then(() => refresh());
+}
+
+function refresh() {
+	const words = Object.keys(dict);
+	const randomWord = words[Math.floor(Math.random()*words.length)];
+	setTerm(dict[randomWord][0]);
 }
 
 document.addEventListener("DOMContentLoaded", init);
