@@ -53,6 +53,7 @@ const mappings = {
 	t: "t",
 	T: "θ",
 	u: "ɵ",
+	U: "ɵ́",
 	v: "v",
 	w: "w",
 	x: "ə",
