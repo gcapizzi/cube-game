@@ -95,7 +95,7 @@ let dict = {};
 
 function setTerm(t) {
 	term = t;
-	document.querySelector("#word").value = term.text
+	document.querySelector("#word").value = term.text;
 	document.querySelector("#listen").setAttribute("href", term.youglish_link);
 	document.querySelector("#guess-ascii").value = "";
 	document.querySelector("#guess-ipa").textContent = "";
@@ -126,16 +126,17 @@ function init() {
 							const selection = event.detail.selection.value;
 							autoCompleteJS.input.value = selection;
 							setTerm(dict[selection][0]);
-						}
-					}
-				}
+						},
+					},
+				},
 			});
-		}).then(() => refresh());
+		})
+		.then(() => refresh());
 }
 
 function refresh() {
 	const words = Object.keys(dict);
-	const randomWord = words[Math.floor(Math.random()*words.length)];
+	const randomWord = words[Math.floor(Math.random() * words.length)];
 	setTerm(dict[randomWord][0]);
 }
 
