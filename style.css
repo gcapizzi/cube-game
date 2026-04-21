@@ -1,7 +1,13 @@
-#guide {
-	overflow: auto;
+#term a.btn {
+	width: 100%;
 }
 
-#guide table {
-	float: left;
+.right {
+	color: #28a745;
 }
+
+.wrong,
+.error {
+	color: #dc3545;
+}
+

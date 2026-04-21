@@ -1,64 +1,97 @@
 <html>
     <head>
         <link rel="stylesheet" href="style.css" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/css/autoComplete.02.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <meta charset="utf-8">
     </head>
     <body>
-        <input id="word">
-        <a id="listen" href="#" target="_blank">▶️</a>
-        <a id="refresh" href="#">🔄</a>
-        <div id="guide">
-            <table border="1" valign="top" cellspacing="0" cellpadding="7">
-                <tr><td>T→θ</td><td><i><u>th</u>ink</i></td></tr>
-                <tr><td>D→ð</td><td><i><u>th</u>e</i></td></tr>
-                <tr><td>S→ʃ</td><td><i><u>sh</u>ip</i></td></tr>
-                <tr><td>Z→ʒ</td><td><i>lei<u>s</u>ure</i></td></tr>
-                <tr><td>C→ʧ</td><td><i><u>ch</u>ip</i></td></tr>
-                <tr><td>G→ʤ</td><td><i><u>j</u>ob</i></td></tr>
-                <tr><td>N→ŋ</td><td><i>si<u>ng</u></i></td></tr>
-            </table>
-            <table border="1" valign="top" cellspacing="0" cellpadding="7">
-                <tr><td>i→ɪ</td><td><ls>kit</ls></td></tr>
-                <tr><td>e→ɛ</td><td><ls>dress</ls></td></tr>
-                <tr><td>a→a</td><td><ls>trap</ls></td></tr>
-                <tr><td>y→ʌ</td><td><ls>strut</ls></td></tr>
-                <tr><td>o→ɔ</td><td><ls>lot</ls></td></tr>
-                <tr><td>u→ɵ</td><td><ls>foot</ls></td></tr>
-                <tr><td>x→ə</td><td><ls>commA</ls></td></tr>
-            </table>
-            <table border="1" valign="top" cellspacing="0" cellpadding="7">
-                <tr><td>iJ→ɪj</td><td><ls>fleece</ls></td></tr>
-                <tr><td>eJ→ɛj</td><td><ls>face</ls></td></tr>
-                <tr><td>aJ→ɑj</td><td><ls>price</ls></td></tr>
-                <tr><td>yW→əw</td><td><ls>goat</ls></td></tr>
-                <tr><td>oJ→oj</td><td><ls>choice</ls></td></tr>
-                <tr><td>uW→ʉw</td><td><ls>goose</ls></td></tr>
-                <tr><td>aW→aw</td><td><ls>mouth</ls></td></tr>
-            </table>
-            <table border="1" valign="top" cellspacing="0" cellpadding="7">
-                <tr><td>iH→ɪː</td><td><ls>near</ls></td></tr>
-                <tr><td>eH→ɛː</td><td><ls>square</ls></td></tr>
-                <tr><td>aH→ɑː</td><td><ls>palm</ls></td></tr>
-                <tr><td>yH→əː</td><td><ls>nurse</ls></td></tr>
-                <tr><td>oH→oː</td><td><ls>thought</ls></td></tr>
-                <tr><td>uH→ɵː</td><td><ls>cure</ls></td></tr>
-            </table>
-        </div>
-        <div id="guess">
-            <p>
-            <form>
-                <input type="text" name="guess-ascii" id="guess-ascii" /><br>
-            </form>
-            </p>
-            <p id="guess-ipa"><p>
-        </div>
-        <div id="result">
-            <p id="result-ascii"></p>
-            <p id="result-ipa"></p>
+        <div class="container text-center">
+            <div id="term" class="row mb-2">
+                <div class="col-8 gx-1">
+                    <input id="word" class="form-control">
+                </div>
+                <div class="col-2 gx-1">
+                    <button id="listen" href="#" target="_blank" class="btn btn-primary" role="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-btn-fill" viewBox="0 0 16 16">
+                            <path d="M0 12V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2m6.79-6.907A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z"/>
+                        </svg>
+                        Listen
+                    </button>
+                </div>
+                <div class="col-2 gx-1">
+                    <button id="refresh" href="#" class="btn btn-info" role="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+                            <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41m-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9"/>
+                            <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5 5 0 0 0 8 3M3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9z"/>
+                        </svg>
+                        Refresh
+                    </button>
+                </div>
+            </div>
+            <div id="guide" class="row">
+                <div class="col">
+                    <table class="table">
+                        <tr><td>T</td><td>θ</td><td>think</td></tr>
+                        <tr><td>D</td><td>ð</td><td>the</td></tr>
+                        <tr><td>S</td><td>ʃ</td><td>ship</td></tr>
+                        <tr><td>Z</td><td>ʒ</td><td>leisure</td></tr>
+                        <tr><td>C</td><td>ʧ</td><td>chip</td></tr>
+                        <tr><td>G</td><td>ʤ</td><td>job</td></tr>
+                        <tr><td>N</td><td>ŋ</td><td>sing</td></tr>
+                    </table>
+                </div>
+                <div class="col">
+                    <table class="table">
+                        <tr><td>i</td><td>ɪ</td><td>kit</td></tr>
+                        <tr><td>e</td><td>ɛ</td><td>dress</td></tr>
+                        <tr><td>a</td><td>a</td><td>trap</td></tr>
+                        <tr><td>y</td><td>ʌ</td><td>strut</td></tr>
+                        <tr><td>o</td><td>ɔ</td><td>lot</td></tr>
+                        <tr><td>u</td><td>ɵ</td><td>foot</td></tr>
+                        <tr><td>x</td><td>ə</td><td>commA</td></tr>
+                    </table>
+                </div>
+                <div class="col">
+                    <table class="table">
+                        <tr><td>iJ</td><td>ɪj</td><td>fleece</td></tr>
+                        <tr><td>eJ</td><td>ɛj</td><td>face</td></tr>
+                        <tr><td>aJ</td><td>ɑj</td><td>price</td></tr>
+                        <tr><td>yW</td><td>əw</td><td>goat</td></tr>
+                        <tr><td>oJ</td><td>oj</td><td>choice</td></tr>
+                        <tr><td>uW</td><td>ʉw</td><td>goose</td></tr>
+                        <tr><td>aW</td><td>aw</td><td>mouth</td></tr>
+                    </table>
+                </div>
+                <div class="col">
+                    <table class="table">
+                        <tr><td>iH</td><td>ɪː</td><td>near</td></tr>
+                        <tr><td>eH</td><td>ɛː</td><td>square</td></tr>
+                        <tr><td>aH</td><td>ɑː</td><td>palm</td></tr>
+                        <tr><td>yH</td><td>əː</td><td>nurse</td></tr>
+                        <tr><td>oH</td><td>oː</td><td>thought</td></tr>
+                        <tr><td>uH</td><td>ɵː</td><td>cure</td></tr>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div id="guess">
+                        <p>
+                        <form>
+                            <input type="text" name="guess-ascii" id="guess-ascii" /><br>
+                        </form>
+                        </p>
+                        <p id="guess-ipa"><p>
+                    </div>
+                    <div id="result">
+                        <p id="result-ascii"></p>
+                        <p id="result-ipa"></p>
+                    </div>
+                </div>
+            </div>
         </div>
         <script src="script.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </body>
 </html>

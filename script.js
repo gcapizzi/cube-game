@@ -148,13 +148,13 @@ document.querySelector("#guess-ascii").addEventListener("input", (e) => {
 		const ipa = asciiToIpa(e.target.value);
 		document.querySelector("#guess-ipa").textContent = ipa;
 		if (term.ipa === ipa) {
-			document.querySelector("#guess-ipa").style = "color: green";
+			document.querySelector("#guess-ipa").className = "right";
 		} else {
-			document.querySelector("#guess-ipa").style = "color: red";
+			document.querySelector("#guess-ipa").className = "wrong";
 		}
 	} catch (e) {
 		document.querySelector("#guess-ipa").textContent = e.message;
-		document.querySelector("#guess-ipa").style = "color: red";
+		document.querySelector("#guess-ipa").className = "error";
 	}
 });
 
